@@ -23,7 +23,9 @@ module Models
     ##
     # Changes coordinates of the rover
     def move
-      raise NotImplementedError
+      new_coordinates = Services::Rover::Move.call(self)
+      @x_coordinate   = new_coordinates[0]
+      @y_coordinate   = new_coordinates[1]
     end
 
     ##
@@ -31,7 +33,7 @@ module Models
     #
     # @param direction [String] direction in which the rover has to rotate
     def rotate(direction)
-      raise NotImplementedError
+      @orientation = Services::Rover::Rotate.call(self, direction)
     end
   end
 end

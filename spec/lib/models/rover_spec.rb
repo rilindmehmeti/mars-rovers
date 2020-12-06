@@ -25,21 +25,24 @@ describe Models::Rover do
 
   describe ".move" do
     before do
+      allow(Services::Rover::Move).to receive(:call).and_return([5, 5])
       subject.move
     end
 
-    xit "changes x and y coordinates" do
-      subject
+    it "changes x and y coordinates" do
+      expect(subject.x_coordinate).to eq(5)
+      expect(subject.y_coordinate).to eq(5)
     end
   end
 
   describe ".rotate" do
     before do
-      subject.rotate
+      allow(Services::Rover::Rotate).to receive(:call).and_return("W")
+      subject.rotate("L")
     end
 
-    xit "changes the direction" do
-      subject
+    it "changes the direction" do
+      expect(subject.orientation).to eq("W")
     end
   end
 end
