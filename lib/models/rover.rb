@@ -5,7 +5,7 @@ module Models
   # Rover holds information for current position, current direction
   # has ability to move and rotate.
   class Rover
-    attr_accessor :x_coordinate, :y_coordinate, :direction
+    attr_accessor :x_coordinate, :y_coordinate, :orientation
 
     ##
     # @param coordinates [Array] coordinates of the initial position. It should
@@ -17,7 +17,7 @@ module Models
     def initialize(coordinates, orientation)
       @x_coordinate = coordinates[0]
       @y_coordinate = coordinates[1]
-      @direction    = orientation
+      @orientation  = orientation
     end
 
     ##
