@@ -5,9 +5,8 @@
 module Services
   module Expedition
     ##
-    # ParseInput handles parsing of input. Holds information of rovers initial
-    # positions and their instructions, as well information of
-    # ending_coordinates of plateau
+    # Setup handles parsing of input and setting up an expedition
+    # based on the given input
     class Setup
       attr_reader :expedition, :raw_input
 
@@ -19,11 +18,9 @@ module Services
       end
 
       ##
-      # Parses the given input
+      # Sets up expedition
       #
-      # @return [Hash] that contains an array of rovers initialized with
-      # current position, an array of rover instructions and
-      # ending coordinates
+      # @return [Models::Expedition] with all extracted data from input
       def call
         parsed_input = raw_input.split("\n")
         @expedition.ending_coordinates = parsed_input
