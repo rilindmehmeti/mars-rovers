@@ -31,8 +31,8 @@ describe Services::Rover::Rotate do
   describe "::CONFIGURATION" do
     let(:expected_configuration) do
       {
-          NR: "E", NL: "W", ER: "S", WR: "N",
-          EL: "N", SR: "W", SL: "E", WL: "S"
+        NR: "E", NL: "W", ER: "S", WR: "N",
+        EL: "N", SR: "W", SL: "E", WL: "S"
       }
     end
 

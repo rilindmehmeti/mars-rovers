@@ -11,8 +11,8 @@ module Services
       # Configuration of possible rotation combinations,
       # based on current orientation and rotation direction
       CONFIGURATION = {
-          NR: "E", NL: "W", ER: "S", WR: "N",
-          EL: "N", SR: "W", SL: "E", WL: "S"
+        NR: "E", NL: "W", ER: "S", WR: "N",
+        EL: "N", SR: "W", SL: "E", WL: "S"
       }.freeze
 
       attr_reader :orientation, :direction
