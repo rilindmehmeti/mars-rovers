@@ -13,16 +13,16 @@ describe Services::Rover::Rotate do
   subject { described_class.new(rover, rotation_direction) }
 
   describe "initialization" do
-    context "with rover" do
+    context "when constructor is called with rover and direction" do
       it_behaves_like "successful initialization"
     end
 
-    context "without params" do
+    context "when constructor is called without params" do
       subject { described_class.new }
       it_behaves_like "failed initialization"
     end
 
-    context "with other params then rover" do
+    context "when constructor is called with rover and rotation alongside other param" do
       subject { described_class.new(rover, rotation_direction, "ExtraParam") }
       it_behaves_like "failed initialization"
     end

@@ -4,6 +4,9 @@ AllCops:
 Metrics/MethodLength:
   Max: 15
 
+Metrics/LineLength:
+  Max: 100
+
 Metrics/BlockLength:
   Enabled: false
 

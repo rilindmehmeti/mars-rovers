@@ -5,7 +5,7 @@ describe Services::Expedition::Setup do
   subject { described_class.new(input) }
 
   describe "initialization" do
-    context "with input" do
+    context "when input is passed in constructor" do
       it_behaves_like "successful initialization"
 
       it "initializes default values" do
@@ -13,12 +13,12 @@ describe Services::Expedition::Setup do
       end
     end
 
-    context "without params" do
+    context "when no params are passed in constructor" do
       subject { described_class.new }
       it_behaves_like "failed initialization"
     end
 
-    context "with extra params" do
+    context "when input is passed alongside other params in constructor" do
       subject { described_class.new(input, "ExtraParam") }
       it_behaves_like "failed initialization"
     end

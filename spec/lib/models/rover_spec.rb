@@ -4,18 +4,18 @@ describe Models::Rover do
   subject { described_class.new([0, 0], "E") }
 
   describe "initialization" do
-    context "with coordinates and orientation" do
+    context "when constructor is called coordinates and orientation" do
       it_behaves_like "successful initialization"
     end
 
-    context "without all required params" do
-      context "with only coordinates" do
+    context "when constructor is not called correctly" do
+      context "when constructor is called with coordinates only" do
         subject { described_class.new([0, 0]) }
 
         it_behaves_like "failed initialization"
       end
 
-      context "with more params" do
+      context "when constructor is called with more params than expected" do
         subject { described_class.new([0, 0], "E", "ExtraParam") }
 
         it_behaves_like "failed initialization"
