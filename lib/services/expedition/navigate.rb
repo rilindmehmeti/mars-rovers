@@ -17,7 +17,13 @@ module Services
         @expedition = expedition
       end
 
-      def call; end
+      ##
+      # Executes instructions for each rover
+      def call
+        expedition.rovers.each_with_index do |rover, index|
+          Services::Rover::ExecuteInstructions.call(rover, expedition.rovers_instructions[index])
+        end
+      end
 
       class << self
         def call(expedition)

@@ -40,7 +40,6 @@ module Models
     # Executes instruction
     #
     # @param instruction [String] instruction which needs to be executed should be in ['R','L', 'M']
-    def execute_instruction(instruction)
-    end
+    def execute_instruction(instruction); end
   end
 end

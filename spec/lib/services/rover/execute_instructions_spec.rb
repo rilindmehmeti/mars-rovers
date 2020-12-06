@@ -51,7 +51,7 @@ describe Services::Rover::ExecuteInstructions do
   end
 
   describe "#call" do
-    subject { described_class.call(rover, instructions)}
+    subject { described_class.call(rover, instructions) }
 
     before do
       allow(rover).to receive(:execute_instruction)
