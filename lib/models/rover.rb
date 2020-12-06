@@ -35,5 +35,12 @@ module Models
     def rotate(direction)
       @orientation = Services::Rover::Rotate.call(self, direction)
     end
+
+    ##
+    # Executes instruction
+    #
+    # @param instruction [String] instruction which needs to be executed should be in ['R','L', 'M']
+    def execute_instruction(instruction)
+    end
   end
 end
