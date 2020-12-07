@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe Models::Rover do
-  subject { described_class.new([0, 0], "E") }
+  subject { described_class.new([0, 0], [5, 5], "E") }
 
   describe "::MOVE_INSTRUCTION" do
     subject { described_class::MOVE_INSTRUCTION }
@@ -18,20 +18,18 @@ describe Models::Rover do
   end
 
   describe "initialization" do
-    context "when constructor is called coordinates and orientation" do
+    context "when constructor is called coordinates, ending coordinates and orientation" do
       it_behaves_like "successful initialization"
     end
 
     context "when constructor is not called correctly" do
       context "when constructor is called with coordinates only" do
         subject { described_class.new([0, 0]) }
-
         it_behaves_like "failed initialization"
       end
 
       context "when constructor is called with more params than expected" do
-        subject { described_class.new([0, 0], "E", "ExtraParam") }
-
+        subject { described_class.new([0, 0], [5, 5], "E", "ExtraParam") }
         it_behaves_like "failed initialization"
       end
     end

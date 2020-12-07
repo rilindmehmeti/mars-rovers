@@ -21,8 +21,8 @@ describe Services::Expedition::Navigate do
   end
 
   shared_examples "call execution examples" do
-    let(:first_rover)  { Models::Rover.new([1, 1], "W") }
-    let(:second_rover) { Models::Rover.new([0, 0], "E") }
+    let(:first_rover)  { Models::Rover.new([1, 1], [5, 5], "W") }
+    let(:second_rover) { Models::Rover.new([0, 0], [5, 5], "E") }
     let(:instructions) { %w[L L M R L] }
 
     before do

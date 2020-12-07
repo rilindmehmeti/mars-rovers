@@ -3,11 +3,15 @@
 describe Services::Rover::Rotate do
   let(:x_coordinate)         { 1 }
   let(:y_coordinate)         { 1 }
+  let(:ending_x_coordinate)  { 5 }
+  let(:ending_y_coordinate)  { 5 }
   let(:orientation)          { "E" }
   let(:rotation_direction)   { "L" }
 
   let(:rover) do
-    Models::Rover.new([x_coordinate, y_coordinate], orientation)
+    Models::Rover.new([x_coordinate, y_coordinate],
+                      [ending_x_coordinate, ending_y_coordinate],
+                      orientation)
   end
 
   subject { described_class.new(rover, rotation_direction) }

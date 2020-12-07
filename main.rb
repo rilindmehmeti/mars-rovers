@@ -9,7 +9,7 @@ def print_line_separator
 end
 
 ##
-# Test Input
+# Test Input from the case
 input = <<~HEREDOC
   5 5
   1 2 N
@@ -17,6 +17,16 @@ input = <<~HEREDOC
   3 3 E
   MMRMMRMRRM
 HEREDOC
+
+##
+# Test input that breaks instructions
+# input = <<~HEREDOC
+#   5 5
+#   1 2 N
+#   LMLMLMLMMD
+#   3 3 E
+#   MMRMMRMRRM
+# HEREDOC
 
 puts ""
 puts "Running Mars Rover Expedition....."

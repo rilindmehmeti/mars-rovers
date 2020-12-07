@@ -9,4 +9,7 @@ module Errors
   ##
   # NotAllowedInstruction is used to identify instructions that break the setup of expedition
   class NotAllowedInstruction < ControlledError; end
+  ##
+  # PositionOutOfSpace is used to identify instructions that move the rover outside plateau space
+  class PositionOutOfSpace < ControlledError; end
 end

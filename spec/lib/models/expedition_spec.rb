@@ -31,8 +31,8 @@ describe Models::Expedition do
   end
 
   describe ".print" do
-    let(:first_rover)  { Models::Rover.new([1, 1], "E") }
-    let(:second_rover) { Models::Rover.new([0, 1], "S") }
+    let(:first_rover)  { Models::Rover.new([1, 1], [5, 5], "E") }
+    let(:second_rover) { Models::Rover.new([0, 1], [5, 5], "S") }
 
     before do
       allow(subject).to receive(:rovers).and_return([first_rover, second_rover])

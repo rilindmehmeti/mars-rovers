@@ -1,12 +1,16 @@
 # frozen_string_literal: true
 
 describe Services::Rover::Move do
-  let(:x_coordinate) { 1 }
-  let(:y_coordinate) { 1 }
-  let(:orientation)  { "E" }
+  let(:x_coordinate)        { 1 }
+  let(:y_coordinate)        { 1 }
+  let(:ending_x_coordinate) { 4 }
+  let(:ending_y_coordinate) { 4 }
+  let(:orientation)         { "E" }
 
   let(:rover) do
-    Models::Rover.new([x_coordinate, y_coordinate], orientation)
+    Models::Rover.new([x_coordinate, y_coordinate],
+                      [ending_x_coordinate, ending_y_coordinate],
+                      orientation)
   end
 
   subject { described_class.new(rover) }
@@ -59,6 +63,38 @@ describe Services::Rover::Move do
       let(:orientation) { "O" }
       it "raises NotImplementedError" do
         expect { subject }.to raise_error(NotImplementedError)
+      end
+    end
+
+    context "when movement goes outside plateau space" do
+      shared_examples "out of plateau space" do
+        it "raises Errors::PositionOutOfSpace" do
+          expect { subject }.to raise_error(Errors::PositionOutOfSpace)
+        end
+      end
+
+      context "when orientation is 'E'(east) " do
+        let(:orientation)         { "E" }
+        let(:ending_x_coordinate) { 1 }
+        include_examples "out of plateau space"
+      end
+
+      context "when orientation is 'W'(west) " do
+        let(:orientation)  { "W" }
+        let(:x_coordinate) { 0 }
+        include_examples "out of plateau space"
+      end
+
+      context "when orientation is 'N'(north) " do
+        let(:orientation)         { "N" }
+        let(:ending_y_coordinate) { 1 }
+        include_examples "out of plateau space"
+      end
+
+      context "when orientation is 'S'(south) " do
+        let(:orientation)  { "S" }
+        let(:y_coordinate) { 0 }
+        include_examples "out of plateau space"
       end
     end
   end

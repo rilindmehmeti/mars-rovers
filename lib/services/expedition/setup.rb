@@ -42,11 +42,27 @@ module Services
         until parsed_input.empty?
           x, y, orientation = parsed_input.shift.split(" ")
           instructions      = parsed_input.shift.split("")
-          rover = Models::Rover.new([x.to_i, y.to_i], orientation)
-          @expedition.rovers.push(rover)
-          @expedition.rovers_instructions.push(instructions)
+          rover = Models::Rover.new([x.to_i, y.to_i], expedition.ending_coordinates, orientation)
+          populate_rover(rover)
+          populate_instructions(instructions)
         end
         expedition
+      end
+
+      ##
+      # Populates a single rover
+      #
+      # @param rover [Models::Rover]
+      def populate_rover(rover)
+        @expedition.rovers.push(rover)
+      end
+
+      ##
+      # Populates a single set of instructions
+      #
+      # @param instructions [Array] array of parsed instructions
+      def populate_instructions(instructions)
+        @expedition.rovers_instructions.push(instructions)
       end
 
       class << self

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe Services::Rover::ExecuteInstructions do
-  let(:rover)        { Models::Rover.new([0, 0], "E") }
+  let(:rover)        { Models::Rover.new([0, 0], [5, 5], "E") }
   let(:instructions) { %w[M L M R] }
 
   subject { described_class.new(rover, instructions) }

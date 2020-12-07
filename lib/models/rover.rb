@@ -2,25 +2,29 @@
 
 module Models
   ##
-  # Rover holds information for current position, current direction
+  # Rover holds information for current position, current direction, ending coordinates of plateau,
   # has ability to move and rotate.
   class Rover
     MOVE_INSTRUCTION    = "M"
     ROTATE_INSTRUCTIONS = %w[R L].freeze
 
-    attr_accessor :x_coordinate, :y_coordinate, :orientation
+    attr_accessor :x_coordinate, :y_coordinate, :orientation, :ending_coordinates
 
     ##
     # @param coordinates [Array] coordinates of the initial position. It should
     # be represented with two elements the first one representing x coordinate,
     # the second one representing y coordinate
+    # @param ending_coordinates [Array] coordinates of the ending position of plateau. It should
+    # be represented with two elements the first one representing x coordinate,
+    # the second one representing y coordinate
     # @param orientation  [String] orientation in which Rover is headed.
     # It should have 4 possible values 'E' for east, 'N' for north,
     # 'S' for south and 'W' for west.
-    def initialize(coordinates, orientation)
-      @x_coordinate = coordinates[0]
-      @y_coordinate = coordinates[1]
-      @orientation  = orientation
+    def initialize(coordinates, ending_coordinates, orientation)
+      @x_coordinate       = coordinates[0]
+      @y_coordinate       = coordinates[1]
+      @ending_coordinates = ending_coordinates
+      @orientation        = orientation
     end
 
     ##
