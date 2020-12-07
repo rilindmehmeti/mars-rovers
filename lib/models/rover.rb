@@ -5,6 +5,9 @@ module Models
   # Rover holds information for current position, current direction
   # has ability to move and rotate.
   class Rover
+    MOVE_INSTRUCTION    = "M"
+    ROTATE_INSTRUCTIONS = %w[R L].freeze
+
     attr_accessor :x_coordinate, :y_coordinate, :orientation
 
     ##
@@ -40,6 +43,19 @@ module Models
     # Executes instruction
     #
     # @param instruction [String] instruction which needs to be executed should be in ['R','L', 'M']
-    def execute_instruction(instruction); end
+    def execute_instruction(instruction)
+      return move if instruction == MOVE_INSTRUCTION
+      return rotate(instruction) if ROTATE_INSTRUCTIONS.include?(instruction)
+
+      raise NotImplementedError
+    end
+
+    ##
+    # Prints current state of the rover
+    #
+    # @return "x y o" [String] where x is x_coordinate, y is y_coordinate and o is orientation
+    def print
+      "#{x_coordinate} #{y_coordinate} #{orientation}"
+    end
   end
 end
