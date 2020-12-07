@@ -29,4 +29,17 @@ describe Models::Expedition do
       it_behaves_like "failed initialization"
     end
   end
+
+  describe ".print" do
+    let(:first_rover)  { Models::Rover.new([1, 1], "E") }
+    let(:second_rover) { Models::Rover.new([0, 1], "S") }
+
+    before do
+      allow(subject).to receive(:rovers).and_return([first_rover, second_rover])
+    end
+
+    it "returns result of Models::Rover#print concatenated with new line" do
+      expect(subject.print).to eq("1 1 E\n0 1 S")
+    end
+  end
 end

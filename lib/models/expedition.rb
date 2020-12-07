@@ -17,5 +17,13 @@ module Models
       @starting_coordinates = [0, 0]
       @ending_coordinates   = [0, 0]
     end
+
+    ##
+    # Prints the state of rovers
+    #
+    # @return [String] result of Models::Rover#print concatenated with new line
+    def print
+      rovers.map(&:print).join("\n")
+    end
   end
 end
