@@ -28,6 +28,14 @@ HEREDOC
 #   MMRMMRMRRM
 # HEREDOC
 
+##
+# Test input that makes rover go out of space
+# input = <<~HEREDOC
+#   5 5
+#   5 5 N
+#   MMLRM
+# HEREDOC
+
 puts ""
 puts "Running Mars Rover Expedition....."
 print_line_separator
@@ -49,5 +57,7 @@ begin
 rescue Errors::ControlledError => e
   puts "Something went wrong during our Expedition :("
   puts ""
+  puts "Expedition failed with message:"
   puts e.message
+  print_line_separator
 end

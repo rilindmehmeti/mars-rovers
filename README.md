@@ -36,3 +36,37 @@ MMRMMRMRRM
 1 3 N
 5 1 E
 ```  
+## Solution Design
+All the business logic of the solution can be found under `lib` folder. 
+
+The design is oriented in 3 parts:
+ * `models` which are used to store information.
+ * `services` where logic of different actions is encapsulated in the respective service.
+ * `errors` where custom errors are created for error handling purposes.
+### Models
+For models are used `Expedition` and `Rover` classes. `Expedition` holds information of the plateau surface with starting and ending coordinates, as well as deployed rovers and their respective instructions. `Rover` holds information for the deployment coordinates, deployment orientation, ending coordinates and has the ability to rotate and move.
+### Services
+Services are classes that execute a desired operation. 
+
+Services are organized based on the domain of the model they serve. In our case services related with `Expedition` can be found under `services/expedition` and services related with `Rover` can be found under `services/rover`
+### Errors
+Errors are custom Exception classes that derive from `RuntimeError`. The idea behind this is to be able to construct a light error version handling where we mainly check if instructions given to the rover are valid instructions. 
+### Testing
+For testing purposes `Rspec` has been used all the tests can be found under `spec` folder. 
+
+As well the code is inspected with `Rubocop` with it's configuration `.rubocop.yml`
+## Requirements
+* Ruby version `2.5.6`
+* Bundler version `2.1.4`
+## Running Tests
+* Run `bundle install`
+* Run `rspec`
+* Run `rubocop`
+## Usage
+For purposes of using the code we have created a file `main.rb` which holds a simple script that uses a hard coded input in order to print the solution on the console.
+
+Run the script with:
+
+`ruby main.rb`
+
+The script will print the given input, in case of controlled failure will print a message that something went wrong during execution. After executing all the instructions for all rovers will print in console the state of the rovers.
