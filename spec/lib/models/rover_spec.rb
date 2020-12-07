@@ -64,12 +64,12 @@ describe Models::Rover do
     before do
       allow(subject).to receive(:move)
       allow(subject).to receive(:rotate)
-      subject.execute_instruction(instruction)
     end
 
     context "when 'M' is passed as instruction" do
       let(:instruction) { "M" }
       it "calls move method" do
+        subject.execute_instruction(instruction)
         expect(subject).to have_received(:move).once
       end
     end
@@ -77,6 +77,7 @@ describe Models::Rover do
     context "when 'R' is passed as instruction" do
       let(:instruction) { "R" }
       it "calls rotate method with 'R' as direction" do
+        subject.execute_instruction(instruction)
         expect(subject).to have_received(:rotate).with("R").once
       end
     end
@@ -84,7 +85,18 @@ describe Models::Rover do
     context "when 'L' is passed as instruction" do
       let(:instruction) { "L" }
       it "calls rotate method with 'L' as direction" do
+        subject.execute_instruction(instruction)
         expect(subject).to have_received(:rotate).with("L").once
+      end
+    end
+
+    context "when an unknown instruction is passed" do
+      let(:instruction) { "LR" }
+
+      it "raises Errors::NotAllowedInstruction" do
+        expect do
+          subject.execute_instruction(instruction)
+        end.to raise_error(Errors::NotAllowedInstruction)
       end
     end
   end

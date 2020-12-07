@@ -47,7 +47,7 @@ module Models
       return move if instruction == MOVE_INSTRUCTION
       return rotate(instruction) if ROTATE_INSTRUCTIONS.include?(instruction)
 
-      raise NotImplementedError
+      raise Errors::NotAllowedInstruction, "Instruction '#{instruction}' is not allowed!"
     end
 
     ##
