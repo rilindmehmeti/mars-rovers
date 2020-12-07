@@ -25,7 +25,7 @@ module Services
       # @return x,y [Int, Int] x,y are coordinates of rover after movement
       def call
         calculate_movement
-        raise Errors::PositionOutOfSpace if out_of_space?
+        raise Errors::PositionOutOfSpace, "Rover is going out of space!" if out_of_space?
 
         [x, y]
       end
